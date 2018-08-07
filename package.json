@@ -1,6 +1,6 @@
 {
   "name": "popupbox",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A simple jquery plugin to show Pop-up boxes with simple animation e.g. rotate, scale",
   "main": "jquery.popupbox.js",
   "scripts": {
