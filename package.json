@@ -1,0 +1,23 @@
+{
+  "name": "popupbox",
+  "version": "0.2.0",
+  "description": "A simple jquery plugin to show Pop-up boxes with simple animation e.g. rotate, scale",
+  "main": "jquery.popupbox.js",
+  "scripts": {
+    "test": "$('body').popupbox({heading:\"Heading\"})"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hamzabutt32/jquery.popupbox.git"
+  },
+  "keywords": [
+    "\"jquery-plugin\"",
+    "\"ecosystem:jquery\""
+  ],
+  "author": "Ameer Hamza",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hamzabutt32/jquery.popupbox/issues"
+  },
+  "homepage": "https://github.com/hamzabutt32/jquery.popupbox#readme"
+}
