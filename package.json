@@ -1,8 +1,8 @@
 {
-  "name": "popupbox",
+  "name": "popupmodalbox",
   "version": "0.3.1",
   "description": "A simple jquery plugin to show Pop-up boxes with simple animation e.g. rotate, scale",
-  "main": "jquery.popupbox.js",
+  "main": "jquery.popupmodalbox.js",
   "scripts": {
     "test": "$('body').popupbox({heading:\"Heading\"})"
   },
