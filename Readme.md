@@ -3,7 +3,7 @@
 ***PopUpBox*** is a simple jQuery plugin that is used to show pop-up boxes with simple animations(rotate,scale)
 
 ##Version##
-0.2.0
+0.3.0
 
 ##Usage##
 add this code just before the closing tag of body  
