@@ -20,7 +20,8 @@ $.fn.popupbox = function(options){
         direction:      "frombottom",
         startanimation: "rotate",
         duration:       0.5,
-        endanimation:   "scale"
+        endanimation:   "scale",
+        boxShadow:      "0px 0px 10px black"
     },options);
    
     if(popUpBoxOptions.direction === "fromright")
@@ -50,7 +51,7 @@ $.fn.popupbox = function(options){
         bottom = "-20%";
         bottomafter = "32%";
     } 
-    var popupdiv = '<div id="popUpBox" style="z-index:1000;width:400px;height:400px;background-color:'
+    var popupdiv = '<div id="overlayPopUpBox"><div id="popUpBox" style="z-index:1000;width:400px;height:400px;background-color:'
     +popUpBoxOptions.bgColor+
     ';color:'
     +popUpBoxOptions.color+';position:fixed;top:'+
@@ -65,8 +66,20 @@ $.fn.popupbox = function(options){
     popUpBoxOptions.heading
     +'</h1><p style="text-align:center;margin-top:50px;overflow:hidden">'+
     popUpBoxOptions.text
-    +'</p><input type="button" id="closepopup" value="Close" style="border:none;"/></div>';
+    +'</p><input type="button" id="closepopup" value="Close" style="border:none;"/></div></div>';
     $('body').append(popupdiv);
+    
+    $('#overlayPopUpBox').css({
+        position: "absolute",
+        backgroundColor: "rgba(0,0,0,0.3)",
+        width: "100%",
+        height: "100vh",
+        top:0,
+        left:0,
+        bottom:0,
+        right:0
+
+    });
     $('#closepopup').css({
         position:"absolute",
         textAlign:"center",
@@ -92,10 +105,11 @@ $.fn.popupbox = function(options){
 
     $("#popUpBox").show();
     $("#popUpBox").css({ 'transform': animationVal,
-        'left': leftafter,
-        'right': rightafter,
-        'top': topafter,
-        'bottom': bottomafter,
+        'left'      :   leftafter,
+        'right'     :   rightafter,
+        'top'       :   topafter,
+        'bottom'    :   bottomafter,
+        'box-shadow':   popUpBoxOptions.boxShadow, 
         'opacity': '1'});
     document.getElementById('closepopup').addEventListener("mouseenter",function () {
         $('#closepopup').css({
@@ -120,6 +134,7 @@ $.fn.popupbox = function(options){
         });
         setTimeout(function () {
             $('#popUpBox').remove();
+            $('#overlayPopUpBox').remove();
         }, popUpBoxOptions.duration*1000);
         
     });
