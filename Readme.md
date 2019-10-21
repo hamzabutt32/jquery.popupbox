@@ -4,7 +4,7 @@
 
 ## Version
 
-0.3.1
+0.3.2
 
 ## Usage
 
@@ -55,8 +55,8 @@ You can also open demo file to see the working.
 
    ***type*** : options (Object) 
    
-   ***Keys***
-   name             :   type    :   usage
+   ***Keys***  
+   name                 :   type    :   usage
 
    **heading**          :   String  :   Text that will display as the heading of the modalbox default is "PopUpBox"  
 
