@@ -21,37 +21,41 @@ $.fn.popupbox = function(options){
         startanimation: "rotate",
         duration:       0.5,
         endanimation:   "scale",
-        boxShadow:      "0px 0px 10px black"
+        boxShadow: "0px 0px 10px black",
+        fullScreen: false,
     },options);
-   
+    
     if(popUpBoxOptions.direction === "fromright")
     {
         right = "-50%";
-        rightafter = "34%";
-        top = topafter  = "15%";
+        rightafter = (popUpBoxOptions.fullScreen?0:((window.innerWidth/2)-200))+"px";
+        top = topafter  = (popUpBoxOptions.fullScreen?0:((window.innerHeight/2)-200))+"px";
         
         left = leftafter = "initial";
         bottom = bottomafter = "initial";
     } if (popUpBoxOptions.direction === "fromleft") {
         right = rightafter = "initial";
-        top = topafter = "15%";
+        top = topafter = (popUpBoxOptions.fullScreen?0:((window.innerHeight/2)-200))+"px";
         left = "-50%";
-        leftafter = "34%";
+        leftafter = (popUpBoxOptions.fullScreen?0:((window.innerWidth/2)-200))+"px";
         bottom = bottomafter = "initial";
     } if (popUpBoxOptions.direction === "fromtop") {
         right = rightafter = "initial";
         top = "-40%";
-        topafter = "15%";
-        left = leftafter = "35%";
+        topafter = (popUpBoxOptions.fullScreen?0:((window.innerHeight/2)-200))+"px";
+        left = leftafter = (popUpBoxOptions.fullScreen?0:((window.innerWidth/2)-200))+"px";
         bottom = bottomafter = "initial";
     } if (popUpBoxOptions.direction === "frombottom") {
         right = rightafter = "initial";
         top = topafter = "initial";
-        left = leftafter = "35%";
-        bottom = "-20%";
-        bottomafter = "32%";
+        left = leftafter = (popUpBoxOptions.fullScreen?0:((window.innerWidth/2)-200))+"px";
+        bottom = "-50%";
+        bottomafter = (popUpBoxOptions.fullScreen?0:((window.innerHeight/2)-200))+"px";
     } 
-    var popupdiv = '<div id="overlayPopUpBox"><div id="popUpBox" style="z-index:1000;width:400px;height:400px;background-color:'
+
+    var popupModalBoxWidth = popUpBoxOptions.fullScreen ? "100%": "400px";
+    var popupModalBoxHeight = popUpBoxOptions.fullScreen ? "100%":"400px";
+    var popupdiv = '<div id="overlayPopUpBox"><div id="popUpBox" style="z-index:1000; flex-direction:column;justify-content:center;align-items:center;width:'+popupModalBoxWidth+';height:'+popupModalBoxHeight+';background-color:'
     +popUpBoxOptions.bgColor+
     ';color:'
     +popUpBoxOptions.color+';position:fixed;top:'+
@@ -81,14 +85,11 @@ $.fn.popupbox = function(options){
 
     });
     $('#closepopup').css({
-        position:"absolute",
         textAlign:"center",
         background: "black",
         color: "white",
         padding: "12px",
         width: "73px",
-        bottom: "60px",
-        left: "167px",
         fontWeight:"bold",
         cursor:"pointer"
 
@@ -104,13 +105,16 @@ $.fn.popupbox = function(options){
 
 
     $("#popUpBox").show();
-    $("#popUpBox").css({ 'transform': animationVal,
+    $("#popUpBox").css({
+        'transform': animationVal,
         'left'      :   leftafter,
         'right'     :   rightafter,
         'top'       :   topafter,
         'bottom'    :   bottomafter,
         'box-shadow':   popUpBoxOptions.boxShadow, 
-        'opacity': '1'});
+        'opacity': '1',
+        'display':'flex'
+    });
     document.getElementById('closepopup').addEventListener("mouseenter",function () {
         $('#closepopup').css({
             
